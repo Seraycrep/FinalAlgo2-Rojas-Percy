@@ -6,8 +6,11 @@ public class Tienda {
     private String ruc;
     private String direccion;
     private Persona personas[];
+    private int contClientes;
+    private Cliente clientes[];
     private int contProductos;
     private Producto productos[];
+    private int contCategorias;
     private Categoria categorias[];
 
     public Tienda(String nombre, String ruc, String direccion, Persona[] personas, Producto[] productos, Categoria[] categorias) {
@@ -15,7 +18,7 @@ public class Tienda {
         this.ruc = ruc;
         this.direccion = direccion;
         this.personas = personas;
-        this.productos = productos;
+        this.productos = new Producto[10];
         this.categorias = categorias;
     }
 
@@ -52,11 +55,41 @@ public class Tienda {
     }
 
     public void agregarCliente(Cliente c) {
+        if(contClientes == clientes.length) {
+            aumentarTamanoClientes();
+        }
         
+        clientes[contClientes] = c;
+        contClientes++;
+    }
+    
+    private void aumentarTamanoClientes() {
+        int nuevoTamano = clientes.length * 2;
+        Cliente[] nuevoClientes = new Cliente[nuevoTamano];
+        for(int i=0; i< contClientes; i++) {
+            nuevoClientes[i] = clientes[i];
+        }
+        
+        clientes = nuevoClientes;
     }
     
     public void agregarCategoria(Categoria cat) {
+        if(contCategorias == categorias.length) {
+            aumentarTamanoCategorias();
+        }
         
+        categorias[contCategorias] = cat;
+        contCategorias++;
+    }
+    
+    public void aumentarTamanoCategorias() {
+        int nuevoTamano = categorias.length * 2;
+        Categoria[] nuevoCategorias = new Categoria[nuevoTamano];
+        for(int i=0; i< contCategorias; i++) {
+            nuevoCategorias[i] = categorias[i];
+        }
+        
+        categorias = nuevoCategorias;
     }
     
     public void agregarProducto(Producto p) {
