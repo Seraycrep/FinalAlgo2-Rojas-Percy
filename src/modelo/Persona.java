@@ -1,37 +1,42 @@
 
 package modelo;
 
+import java.util.Date;
+
 public class Persona {
     private String nombre;
-    private float dinero;
+    private String paterno;
+    private String materno;
+    private Date nacimiento;
+    private String numDocumento;
 
-    public Persona(String nombre, float dinero) {
+    public Persona(String nombre, String paterno, String materno, Date nacimiento, String numDocumento) {
         this.nombre = nombre;
-        this.dinero = dinero;
+        this.paterno = paterno;
+        this.materno = materno;
+        this.nacimiento = nacimiento;
+        this.numDocumento = numDocumento;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public float getDinero() {
-        return dinero;
+    public String getPaterno() {
+        return paterno;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getMaterno() {
+        return materno;
     }
 
-    public void setDinero(float dinero) {
-        this.dinero = dinero;
+    public Date getNacimiento() {
+        return nacimiento;
     }
-    
-    public boolean pagar() {
-        
-        return false;   
+
+    public String getNumDocumento() {
+        return numDocumento;
     }
-    
-    public boolean recargarDinero() {
-        return false;
-    }
+
+     
 }
