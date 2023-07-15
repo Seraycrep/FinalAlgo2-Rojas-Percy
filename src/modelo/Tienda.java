@@ -8,6 +8,7 @@ public class Tienda {
     private Persona personas[];
     private int contClientes;
     private Cliente clientes[];
+    private Trabajador trabajadores[];
     private int contProductos;
     private Producto productos[];
     private int contCategorias;
@@ -112,17 +113,51 @@ public class Tienda {
     }
     
     public Producto[] buscarProductosPorCategoria(Categoria cat) {
+        Producto[] resultadoTemp = new Producto[contProductos];
+        int contResultados = 0;
         
-        return null;    
+        for(int i=0; i < contProductos; i++) {
+            Producto producto = productos[i];
+            if(producto.getCategoria().equals(cat)) {
+                resultadoTemp[contResultados] = producto;
+                contResultados++;
+            }
+        }
+        
+        Producto[] resultado = new Producto[contResultados];
+        for(int i=0; i < contResultados; i++) {
+            resultado[i] = resultadoTemp[i];
+        }
+        
+        return resultado;    
     }
     
     public Producto[] buscarProductosPorNombre(String nombre) {
+        Producto[] resultadoTemp = new Producto[contProductos];
+        int contResultados = 0;
         
-        return null;    
+        for(int i=0; i < contProductos; i++) {
+            Producto producto = productos[i];
+            if(producto.getNombre().equals(nombre)) {
+                resultadoTemp[contResultados] = producto;
+                contResultados++;
+            }
+        }
+        
+        Producto[] resultado = new Producto[contResultados];
+        for(int i=0; i < contResultados; i++) {
+            resultado[i] = resultadoTemp[i];
+        }
+        
+        return resultado;    
     }
     
     public Persona autenticar(String email, String password) {
-        
+        for(Trabajador trabajador : trabajadores) {
+            if(trabajador.getEmail().equals(email) && trabajador.getPassword().equals(password)) {
+                return trabajador;
+            }
+        }
         return null;  
     }
     

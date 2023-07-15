@@ -60,8 +60,8 @@ public class Venta {
         this.detalles = detalles;
     }
     
-    public void agregarProducto(Producto p) {
-        
+    public void agregarProducto(Producto p, int cantidad, float descuento) {
+        //Detalle detalle = new Detalle(cantidad, p.getPrecio(), descuento, this);
     }
     
     public boolean eliminarProducto(Producto p, int cantidad) {
