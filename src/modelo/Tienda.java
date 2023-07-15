@@ -6,6 +6,7 @@ public class Tienda {
     private String ruc;
     private String direccion;
     private Persona personas[];
+    private int contProductos;
     private Producto productos[];
     private Categoria categorias[];
 
@@ -59,7 +60,22 @@ public class Tienda {
     }
     
     public void agregarProducto(Producto p) {
+        if(contProductos == productos.length) {
+            aumentarTamanoProductos();
+        }
         
+        productos[contProductos] = p;
+        contProductos++;
+    }
+    
+    private void aumentarTamanoProductos() {
+        int nuevoTamano = productos.length * 2;
+        Producto[] nuevoProductos = new Producto[nuevoTamano];
+        for(int i=0; i< contProductos; i++) {
+            nuevoProductos[i] = productos[i];
+        }
+        
+        productos = nuevoProductos;
     }
     
     public Producto[] buscarProductosPorCategoria(Categoria cat) {
